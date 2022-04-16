@@ -34,5 +34,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^8.5.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.8",
+    "prettier": "2.6.2"
+  },
+  "lint-staged": {
+    "*.{js,jsx,css,md,svg}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   }
 }
