@@ -8,7 +8,7 @@ const graphql = require("./graphql");
 
 module.exports = async function (fastify, opts) {
   fastify.register(mercurius, {
-    graphiql: "playground",
+    graphiql: true,
     ...graphql,
   });
 
