@@ -1,0 +1,12 @@
+type Query {
+  item(id: ID!): Item
+  items: [Item]
+}
+
+type Item {
+  id: Int
+  name: String
+  description: String
+  quantity: Int
+  completed: Boolean
+}
