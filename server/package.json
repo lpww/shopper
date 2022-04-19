@@ -23,9 +23,11 @@
     "fastify-autoload": "^3.10.0",
     "fastify-cli": "^2.15.0",
     "fastify-plugin": "^3.0.0",
+    "fastify-postgres": "^3.6.0",
     "fastify-sensible": "^3.1.2",
     "graphql": "^16.3.0",
-    "mercurius": "^9.3.6"
+    "mercurius": "^9.3.6",
+    "pg": "^8.7.3"
   },
   "devDependencies": {
     "lint-staged": "^12.3.8",
