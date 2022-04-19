@@ -1,5 +1,4 @@
 type Query {
-  item(id: ID!): Item
   items: [Item]
 }
 
