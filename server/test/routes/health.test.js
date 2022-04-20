@@ -9,5 +9,6 @@ test("health is loaded", async (t) => {
   const res = await app.inject({
     url: "/health",
   });
+
   t.equal(res.payload, '{"message":"ok"}');
 });
