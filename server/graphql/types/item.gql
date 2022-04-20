@@ -22,7 +22,7 @@ type Item {
 }
 
 type AddItemPayload {
-  id: Int!
+  item: Item!
 }
 
 type UpdateItemPayload {

@@ -1,11 +1,9 @@
 const addItem = async (parent, args, context) => {
-  return context.app.pg.transact(async (client) => {
-    const result = await client.query(
-      "INSERT INTO items(name, description, quantity) VALUES ($1, $2, $3) RETURNING id",
-      [args.item.name, args.item.description, args.item.quantity]
-    );
-    return result.rows[0];
-  });
+  const result = await context.app.pg.query(
+    "INSERT INTO items(name, description, quantity) VALUES ($1, $2, $3) RETURNING id, name, description, quantity, completed",
+    [args.item.name, args.item.description, args.item.quantity]
+  );
+  return { item: result.rows[0] };
 };
 
 const updateItem = async (parent, args, context) => {
