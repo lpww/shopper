@@ -7,10 +7,10 @@ input AddItemInput {
 
 input UpdateItemInput {
   id: Int!
-  name: String
-  description: String
-  quantity: String
-  completed: String
+  name: String!
+  description: String!
+  quantity: Int!
+  completed: Boolean!
 }
 
 input DeleteItemInput {
