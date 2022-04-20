@@ -1,12 +1,27 @@
-type Query {
-  items: [Item]
+input AddItemInput {
+  name: String!
+  description: String
+  quantity: Int
+  completed: Boolean
 }
 
 type Item {
-  id: Int
-  name: String
+  id: Int!
+  name: String!
   description: String
   quantity: Int
   completed: Boolean
   deleted: Boolean
+}
+
+type AddItemPayload {
+  id: Int!
+}
+
+type Query {
+  items: [Item]
+}
+
+type Mutation {
+  addItem(item: AddItemInput!): AddItemPayload!
 }
