@@ -10,7 +10,7 @@ const addItem = async (parent, args, context) => {
 
 const items = async (parent, args, context) => {
   const result = await context.app.pg.query(
-    "SELECT * FROM items WHERE deleted = false"
+    "SELECT id, name, description, quantity, completed FROM items WHERE deleted = false"
   );
   return result.rows;
 };
