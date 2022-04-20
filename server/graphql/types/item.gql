@@ -34,7 +34,7 @@ type UpdateItemPayload {
 }
 
 type Query {
-  items: [Item]
+  getItems: [Item]
 }
 
 type Mutation {

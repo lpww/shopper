@@ -28,7 +28,7 @@ const deleteItem = async (parent, args, context) => {
   return { item: result.rows[0] };
 };
 
-const items = async (parent, args, context) => {
+const getItems = async (parent, args, context) => {
   const result = await context.app.pg.query(
     "SELECT id, name, description, quantity, completed FROM items WHERE deleted = false"
   );
@@ -36,6 +36,6 @@ const items = async (parent, args, context) => {
 };
 
 module.exports = {
-  Query: { items },
+  Query: { getItems },
   Mutation: { addItem, updateItem, deleteItem },
 };
