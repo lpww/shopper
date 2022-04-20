@@ -13,6 +13,10 @@ input UpdateItemInput {
   completed: String
 }
 
+input DeleteItemInput {
+  id: Int!
+}
+
 type Item {
   id: Int!
   name: String!
@@ -36,4 +40,5 @@ type Query {
 type Mutation {
   addItem(item: AddItemInput!): AddItemPayload!
   updateItem(item: UpdateItemInput!): UpdateItemPayload!
+  deleteItem(item: DeleteItemInput!): UpdateItemPayload!
 }
