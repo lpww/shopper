@@ -1,23 +1,96 @@
-# Getting Started with Fastify-CLI [Fastify-CLI](https://www.npmjs.com/package/fastify-cli)
-This project was bootstrapped with Fastify-CLI.
+# shopper server
 
-## Available Scripts
+The shopper server is graphql api running node that is built with fastify and mercurius. It is accompanied by a postgres
+database running in a docker container.
 
-In the project directory, you can run:
+## local setup
 
-### `npm run dev`
+Ensure that you are in the server directory before continuing through the setup docs. `cd server/`
 
-To start the app in dev mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### environment variables
 
-### `npm start`
+1. `cp .env.example .env` to initialize your environment
+2. Open `.env` and edit the postgres variables (POSTGRES_DB, POSTGRES_PASSWORD, POSTGRES_USER). For local development, they can be set to any value
 
-For production mode
+### database
 
-### `npm run test`
+1. Start the database: `docker-compose up`
+2. Stop the database: `docker-compose down`
 
-Run the test cases.
+### server
 
-## Learn More
+1. Install dependencies: `npm ci`
+2. Run the server: `npm run dev`
 
-To learn Fastify, check out the [Fastify documentation](https://www.fastify.io/docs/latest/).
+- NOTE: `npm start` can be used to run the app in production mode
+
+## tests
+
+1. Run the tests: `npm test`
+
+## graphiql playground
+
+The server has graphiql enabled. Visit http://localhost:3000/graphiql to visit an in-browser tool for writing,
+validating, and testing graphql queries. The server graphql documentation is also visible from this page.
+
+## graphql api
+
+### add an item
+
+```graphql
+mutation {
+  addItem(item: { name: "test item", description: "test description", quantity: 1, completed: false }) {
+    item {
+      id
+      name
+      description
+      quantity
+      completed
+    }
+  }
+}
+```
+
+### update an item
+
+```graphql
+mutation {
+  updateItem(item: { id: 1, completed: true, name: "thomas update", description: "updated description", quantity: 2 }) {
+    item {
+      id
+      name
+      description
+      quantity
+      completed
+    }
+  }
+}
+```
+
+### delete an item
+
+```graphql
+mutation {
+  deleteItem(item: { id: 1 }) {
+    item {
+      id
+      name
+      completed
+    }
+  }
+}
+```
+
+### get items
+
+```graphql
+query {
+  getItems {
+    id
+    name
+    description
+    quantity
+    completed
+  }
+}
+```
