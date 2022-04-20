@@ -9,7 +9,9 @@ this repo contains 2 codebases: `client` and `server`
 
 ## quick start guide
 
-- clone the repo `git clone https://github.com/lpww/shopper.git`
+- clone the repo: `git clone https://github.com/lpww/shopper.git`
+- copy example env: `cd server && cp .env.example .env`
+- edit `server/.env` to assign `POSTGRES_DB`, `POSTGRES_PASSWORD`, and `POSTGRES_USER` any value you like
 - run database: `cd server && docker-compose up`
 - run server: `cd server && npm ci && npm run dev`
 - run client: `cd client && npm ci && npm start`
