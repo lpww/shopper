@@ -5,6 +5,14 @@ input AddItemInput {
   completed: Boolean
 }
 
+input UpdateItemInput {
+  id: Int!
+  name: String
+  description: String
+  quantity: String
+  completed: String
+}
+
 type Item {
   id: Int!
   name: String!
@@ -17,10 +25,15 @@ type AddItemPayload {
   id: Int!
 }
 
+type UpdateItemPayload {
+  item: Item!
+}
+
 type Query {
   items: [Item]
 }
 
 type Mutation {
   addItem(item: AddItemInput!): AddItemPayload!
+  updateItem(item: UpdateItemInput!): UpdateItemPayload!
 }

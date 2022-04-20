@@ -8,6 +8,20 @@ const addItem = async (parent, args, context) => {
   });
 };
 
+const updateItem = async (parent, args, context) => {
+  const result = await context.app.pg.query(
+    "UPDATE items SET name = $1, description = $2, quantity = $3, completed = $4 WHERE id = $5 RETURNING id, name, description, quantity, completed",
+    [
+      args.item.name,
+      args.item.description,
+      args.item.quantity,
+      args.item.completed ?? false,
+      args.item.id,
+    ]
+  );
+  return { item: result.rows[0] };
+};
+
 const items = async (parent, args, context) => {
   const result = await context.app.pg.query(
     "SELECT id, name, description, quantity, completed FROM items WHERE deleted = false"
@@ -17,5 +31,5 @@ const items = async (parent, args, context) => {
 
 module.exports = {
   Query: { items },
-  Mutation: { addItem },
+  Mutation: { addItem, updateItem },
 };
