@@ -1,27 +1,25 @@
-import logo from "./logo.svg";
-import GraphQLProvider from "./components/GraphQLProvider";
-import "./App.css";
+import CssBaseline from "@mui/material/CssBaseline";
+import ThemeProvider from "@mui/material/styles/ThemeProvider";
+
+import GraphQLProvider from "components/GraphQLProvider";
+import Header from "components/Header";
+
+import theme from "./theme";
+
+import "App.css";
 
 function App() {
   return (
-    <GraphQLProvider>
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    </GraphQLProvider>
+    <>
+      <CssBaseline />
+      <ThemeProvider theme={theme}>
+        <GraphQLProvider>
+          <div className="App">
+            <Header />
+          </div>
+        </GraphQLProvider>
+      </ThemeProvider>
+    </>
   );
 }
 
