@@ -4,9 +4,9 @@ const fp = require("fastify-plugin");
 const postgres = require("fastify-postgres");
 
 /**
- * This plugins adds a /graphql endpoint
+ * This plugins adds some utilities to handle postgres connections
  *
- * @see https://github.com/mercurius-js/mercurius
+ * @see https://github.com/fastify/fastify-postgres
  */
 module.exports = fp(async function (fastify, opts) {
   fastify.register(postgres, {
