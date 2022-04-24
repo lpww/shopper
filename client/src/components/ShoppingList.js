@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { useQuery } from "graphql-hooks";
 
 import styled from "@mui/material/styles/styled";
 
+import AddItemDialog from "components/AddItemDialog";
 import FlexColumn from "components/FlexColumn";
 import FlexRow from "components/FlexRow";
 import LoadingSpinner from "components/LoadingSpinner";
@@ -27,6 +29,7 @@ const EmptyList = styled(FlexColumn)`
 `;
 
 const ShoppingList = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { data, loading, error } = useQuery(getItems);
 
   if (error) {
@@ -43,39 +46,51 @@ const ShoppingList = () => {
 
   if (!data?.getItems?.length) {
     return (
-      <Layout>
-        <EmptyList>
-          <Typography mt={15} mb={1}>
-            Your shopping list is empty :(
-          </Typography>
-          <Button
-            onClick={() => alert("add")}
-            sx={{ marginBottom: 15, marginTop: 1 }}
-          >
-            <Typography
-              fontWeight="500"
-              p={0.5}
-              textTransform="none"
-              variant="caption"
-            >
-              Add your first item
+      <>
+        <AddItemDialog
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        />
+        <Layout>
+          <EmptyList>
+            <Typography mt={15} mb={1}>
+              Your shopping list is empty :(
             </Typography>
-          </Button>
-        </EmptyList>
-      </Layout>
+            <Button
+              onClick={() => setIsModalOpen(true)}
+              sx={{ marginBottom: 15, marginTop: 1 }}
+            >
+              <Typography
+                fontWeight="500"
+                p={0.5}
+                textTransform="none"
+                variant="caption"
+              >
+                Add your first item
+              </Typography>
+            </Button>
+          </EmptyList>
+        </Layout>
+      </>
     );
   }
 
   return (
-    <Layout>
-      <FlexRow sx={{ alignItems: "center", justifyContent: "space-between" }}>
-        <Typography variant="h6">Your Items</Typography>
-        <Button onClick={() => alert("add")}>Add item</Button>
-      </FlexRow>
-      {data.getItems.map((item) => {
-        return <ShoppingListItem key={item.id} {...item} />;
-      })}
-    </Layout>
+    <>
+      <AddItemDialog
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
+      <Layout>
+        <FlexRow sx={{ alignItems: "center", justifyContent: "space-between" }}>
+          <Typography variant="h6">Your Items</Typography>
+          <Button onClick={() => setIsModalOpen(true)}>Add item</Button>
+        </FlexRow>
+        {data.getItems.map((item) => {
+          return <ShoppingListItem key={item.id} {...item} />;
+        })}
+      </Layout>
+    </>
   );
 };
 
