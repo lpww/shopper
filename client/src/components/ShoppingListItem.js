@@ -32,7 +32,7 @@ const ThemedCheckbox = styled(Checkbox)`
   color: ${(props) => props.theme.palette.text.secondary};
 `;
 
-const ShoppingListItem = ({ item, onComplete, onEdit }) => {
+const ShoppingListItem = ({ item, onComplete, onDelete, onEdit }) => {
   const { completed, description, name } = item;
 
   return (
@@ -62,7 +62,10 @@ const ShoppingListItem = ({ item, onComplete, onEdit }) => {
         >
           <EditIcon color="action" />
         </IconButton>
-        <IconButton onClick={() => alert("delete")} sx={{ marginRight: 2 }}>
+        <IconButton
+          onClick={() => onDelete && onDelete(item)}
+          sx={{ marginRight: 2 }}
+        >
           <DeleteIcon color="action" />
         </IconButton>
       </div>
