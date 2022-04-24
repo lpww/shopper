@@ -38,7 +38,10 @@ const ShoppingListItem = ({ item, onEdit }) => {
   return (
     <Layout completed={completed.toString()}>
       <FlexRow>
-        <ThemedCheckbox checked={completed} onChange={() => alert("update")} />
+        <ThemedCheckbox
+          checked={completed}
+          onChange={() => onComplete && onComplete(item)}
+        />
         <FlexColumn sx={{ justifyContent: "center" }}>
           <Typography completed={completed.toString()} variant="subtitle1">
             {name}
