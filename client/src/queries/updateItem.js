@@ -1,18 +1,20 @@
 import { gql } from "graphql-request";
 
 export default gql`
-  mutation UpdateUser(
+  mutation UpdateItem(
     $name: String!
-    $description: String
-    $quantity: Int
-    $completed: Boolean
+    $description: String!
+    $quantity: Int!
+    $completed: Boolean!
+    $id: Int!
   ) {
-    updateUser(
+    updateItem(
       item: {
         name: $name
         description: $description
         quantity: $quantity
         completed: $completed
+        id: $id
       }
     ) {
       item {
