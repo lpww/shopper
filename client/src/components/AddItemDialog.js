@@ -1,5 +1,6 @@
-import { useFormik } from "formik";
 import * as yup from "yup";
+import { useFormik } from "formik";
+import { useMutation } from "graphql-hooks";
 
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -13,6 +14,8 @@ import styled from "@mui/material/styles/styled";
 import Button from "components/Button";
 import DosisTypography from "components/DosisTypography";
 import NunitoTypography from "components/NunitoTypography";
+
+import addItemQuery from "queries/addItem";
 
 const Header = styled(DialogTitle)`
   background-color: ${(props) => props.theme.palette.grey["100"]};
@@ -47,13 +50,21 @@ const validationSchema = yup.object({
   quantity: yup.number("Quantity"),
 });
 
-const AddItemDialog = ({ onClose, isOpen }) => {
+const AddItemDialog = ({ onClose, isOpen, onSubmit }) => {
+  const [addItem] = useMutation(addItemQuery);
+
   const formik = useFormik({
     initialValues: { name: "", description: "", quantity: 1 },
     validationSchema,
-    onSubmit: async (values) => {
-      alert(`submitting ${JSON.stringify(values)}`);
+    onSubmit: async (variables) => {
       formik.resetForm();
+      try {
+        const queryVariables = { variables };
+        const { data } = await addItem(queryVariables);
+        onSubmit && onSubmit(data);
+      } catch (e) {
+        console.error("There was an error submitting the form:", e);
+      }
     },
   });
 
