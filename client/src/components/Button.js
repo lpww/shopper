@@ -1,9 +1,9 @@
-import Button from "@mui/material/Button";
+import MuiButton from "@mui/material/Button";
 import Typography from "components/NunitoTypography";
 
-const SubmitButton = ({ children, ...props }) => {
+const Button = ({ children, ...props }) => {
   return (
-    <Button color="secondary" size="small" variant="contained" {...props}>
+    <MuiButton color="secondary" size="small" variant="contained" {...props}>
       <Typography
         fontWeight="500"
         p={0.5}
@@ -12,8 +12,8 @@ const SubmitButton = ({ children, ...props }) => {
       >
         {children}
       </Typography>
-    </Button>
+    </MuiButton>
   );
 };
 
-export default SubmitButton;
+export default Button;

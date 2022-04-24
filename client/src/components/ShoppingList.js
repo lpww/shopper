@@ -6,7 +6,7 @@ import FlexColumn from "components/FlexColumn";
 import FlexRow from "components/FlexRow";
 import LoadingSpinner from "components/LoadingSpinner";
 import ShoppingListItem from "components/ShoppingListItem";
-import SubmitButton from "components/SubmitButton";
+import Button from "components/Button";
 import Typography from "components/NunitoTypography";
 
 import getItems from "queries/getItems";
@@ -48,7 +48,7 @@ const ShoppingList = () => {
           <Typography mt={15} mb={1}>
             Your shopping list is empty :(
           </Typography>
-          <SubmitButton
+          <Button
             onClick={() => alert("add")}
             sx={{ marginBottom: 15, marginTop: 1 }}
           >
@@ -60,7 +60,7 @@ const ShoppingList = () => {
             >
               Add your first item
             </Typography>
-          </SubmitButton>
+          </Button>
         </EmptyList>
       </Layout>
     );
@@ -70,7 +70,7 @@ const ShoppingList = () => {
     <Layout>
       <FlexRow sx={{ alignItems: "center", justifyContent: "space-between" }}>
         <Typography variant="h6">Your Items</Typography>
-        <SubmitButton onClick={() => alert("add")}>Add item</SubmitButton>
+        <Button onClick={() => alert("add")}>Add item</Button>
       </FlexRow>
       {data.getItems.map((item) => {
         return <ShoppingListItem key={item.id} {...item} />;
