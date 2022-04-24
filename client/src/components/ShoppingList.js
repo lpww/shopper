@@ -1,13 +1,12 @@
 import { useQuery } from "graphql-hooks";
 
-import Button from "@mui/material/Button";
-
 import styled from "@mui/material/styles/styled";
 
 import FlexColumn from "components/FlexColumn";
 import FlexRow from "components/FlexRow";
 import LoadingSpinner from "components/LoadingSpinner";
 import ShoppingListItem from "components/ShoppingListItem";
+import SubmitButton from "components/SubmitButton";
 import Typography from "components/NunitoTypography";
 
 import getItems from "queries/getItems";
@@ -49,12 +48,9 @@ const ShoppingList = () => {
           <Typography mt={15} mb={1}>
             Your shopping list is empty :(
           </Typography>
-          <Button
-            color="secondary"
+          <SubmitButton
             onClick={() => alert("add")}
-            size="small"
             sx={{ marginBottom: 15, marginTop: 1 }}
-            variant="contained"
           >
             <Typography
               fontWeight="500"
@@ -64,7 +60,7 @@ const ShoppingList = () => {
             >
               Add your first item
             </Typography>
-          </Button>
+          </SubmitButton>
         </EmptyList>
       </Layout>
     );
@@ -74,6 +70,7 @@ const ShoppingList = () => {
     <Layout>
       <FlexRow sx={{ alignItems: "center", justifyContent: "space-between" }}>
         <Typography variant="h6">Your Items</Typography>
+        <SubmitButton onClick={() => alert("add")}>Add item</SubmitButton>
       </FlexRow>
       {data.getItems.map((item) => {
         return <ShoppingListItem key={item.id} {...item} />;
