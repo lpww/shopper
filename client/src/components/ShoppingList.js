@@ -58,6 +58,10 @@ const ShoppingList = () => {
         <AddItemDialog
           isOpen={isAddModalOpen}
           onClose={() => setIsAddModalOpen(false)}
+          onSubmit={() => {
+            refetch();
+            setIsAddModalOpen(false);
+          }}
         />
         <Layout>
           <EmptyList>
@@ -88,6 +92,10 @@ const ShoppingList = () => {
       <AddItemDialog
         isOpen={isAddModalOpen}
         onClose={() => setIsAddModalOpen(false)}
+        onSubmit={() => {
+          refetch();
+          setIsAddModalOpen(false);
+        }}
       />
       <UpdateItemDialog
         isOpen={isUpdateModalOpen}
