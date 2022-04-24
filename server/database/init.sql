@@ -10,5 +10,5 @@ CREATE TABLE items(
 
 -- add test data
 INSERT INTO items (name, description, quantity, completed, deleted)
-  VALUES ('bacon', 'smoked', 5, true, false),
+  VALUES ('bacon', 'smoked', 3, true, false),
   ('eggs', NULL, NULL, false, false);
