@@ -32,8 +32,8 @@ const ThemedCheckbox = styled(Checkbox)`
   color: ${(props) => props.theme.palette.text.secondary};
 `;
 
-const ShoppingListItem = (props) => {
-  const { completed, description, name } = props;
+const ShoppingListItem = ({ item, onEdit }) => {
+  const { completed, description, name } = item;
 
   return (
     <Layout completed={completed.toString()}>
@@ -53,7 +53,10 @@ const ShoppingListItem = (props) => {
         </FlexColumn>
       </FlexRow>
       <div>
-        <IconButton onClick={() => alert("edit")} sx={{ marginRight: 1 }}>
+        <IconButton
+          onClick={() => onEdit && onEdit(item)}
+          sx={{ marginRight: 1 }}
+        >
           <EditIcon color="action" />
         </IconButton>
         <IconButton onClick={() => alert("delete")} sx={{ marginRight: 2 }}>
