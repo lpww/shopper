@@ -39,7 +39,7 @@ const ShoppingListItem = (props) => {
     <Layout completed={completed.toString()}>
       <FlexRow>
         <ThemedCheckbox checked={completed} onChange={() => alert("update")} />
-        <FlexColumn>
+        <FlexColumn sx={{ justifyContent: "center" }}>
           <Typography completed={completed.toString()} variant="subtitle1">
             {name}
           </Typography>
