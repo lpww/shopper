@@ -3,6 +3,7 @@ import ThemeProvider from "@mui/material/styles/ThemeProvider";
 
 import GraphQLProvider from "components/GraphQLProvider";
 import Header from "components/Header";
+import ShoppingList from "components/ShoppingList";
 
 import theme from "./theme";
 
@@ -16,6 +17,7 @@ function App() {
         <GraphQLProvider>
           <div className="App">
             <Header />
+            <ShoppingList />
           </div>
         </GraphQLProvider>
       </ThemeProvider>
