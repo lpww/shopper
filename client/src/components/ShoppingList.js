@@ -14,6 +14,7 @@ import Typography from "components/NunitoTypography";
 
 import getItemsQuery from "queries/getItems";
 import updateItemQuery from "queries/updateItem";
+import deleteItemQuery from "queries/deleteItem";
 
 const Layout = styled("div")`
   display: flex;
@@ -37,6 +38,7 @@ const ShoppingList = () => {
 
   const { data, loading, error, refetch } = useQuery(getItemsQuery);
   const [updateItem] = useMutation(updateItemQuery);
+  const [deleteItem] = useMutation(deleteItemQuery);
 
   if (error) {
     alert("There was an error processing the request");
@@ -120,6 +122,14 @@ const ShoppingList = () => {
                   refetch();
                 } catch (e) {
                   console.error("There was an error updating the item", e);
+                }
+              }}
+              onDelete={async (item) => {
+                try {
+                  await deleteItem({ variables: { id: item.id } });
+                  refetch();
+                } catch (e) {
+                  console.error("There was an error deleting the item, e");
                 }
               }}
               onEdit={(item) => {
