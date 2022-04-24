@@ -1,5 +1,6 @@
-import DosisTypography from "./DosisTypography";
 import styled from "@mui/material/styles/styled";
+
+import DosisTypography from "./DosisTypography";
 
 const Title = styled(DosisTypography)`
   color: white;
@@ -9,7 +10,7 @@ const Title = styled(DosisTypography)`
 
 const Layout = styled("div")`
   height: ${(props) => props.theme.spacing(8)};
-  background: ${(props) => props.theme.palette.primary.dark};
+  background: ${(props) => props.theme.palette.primary.main};
   display: flex;
   align-items: center;
   padding-left: ${(props) => props.theme.spacing(4)};

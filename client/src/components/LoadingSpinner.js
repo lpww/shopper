@@ -8,14 +8,10 @@ const Layout = styled("div")`
   padding: ${(props) => props.theme.spacing(1)};
 `;
 
-const Spinner = styled(CircularProgress)`
-  color: ${(props) => props.theme.palette.primary.dark};
-`;
-
 const LoadingSpinner = () => {
   return (
     <Layout>
-      <Spinner size="72px" thickness={1.5} />
+      <CircularProgress size="72px" thickness={1.5} />
     </Layout>
   );
 };
