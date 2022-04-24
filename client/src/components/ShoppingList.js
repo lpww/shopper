@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useQuery } from "graphql-hooks";
+import { useMutation, useQuery } from "graphql-hooks";
 
 import styled from "@mui/material/styles/styled";
 
@@ -13,6 +13,7 @@ import Button from "components/Button";
 import Typography from "components/NunitoTypography";
 
 import getItemsQuery from "queries/getItems";
+import updateItemQuery from "queries/updateItem";
 
 const Layout = styled("div")`
   display: flex;
@@ -34,7 +35,8 @@ const ShoppingList = () => {
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
 
-  const { data, loading, error } = useQuery(getItemsQuery);
+  const { data, loading, error, refetch } = useQuery(getItemsQuery);
+  const [updateItem] = useMutation(updateItemQuery);
 
   if (error) {
     alert("There was an error processing the request");
@@ -91,6 +93,7 @@ const ShoppingList = () => {
         onSubmit={() => {
           setIsUpdateModalOpen(false);
           setEditingItem(null);
+          refetch();
         }}
         item={editingItem}
       />
@@ -103,6 +106,22 @@ const ShoppingList = () => {
           return (
             <ShoppingListItem
               key={item.id}
+              onComplete={async (item) => {
+                try {
+                  await updateItem({
+                    variables: {
+                      id: item.id,
+                      name: item.name ?? "",
+                      description: item.description ?? "",
+                      quantity: item.quantity ?? 1,
+                      completed: !item.completed,
+                    },
+                  });
+                  refetch();
+                } catch (e) {
+                  console.error("There was an error updating the item", e);
+                }
+              }}
               onEdit={(item) => {
                 setEditingItem(item);
                 setIsUpdateModalOpen(true);

@@ -32,7 +32,7 @@ const ThemedCheckbox = styled(Checkbox)`
   color: ${(props) => props.theme.palette.text.secondary};
 `;
 
-const ShoppingListItem = ({ item, onEdit }) => {
+const ShoppingListItem = ({ item, onComplete, onEdit }) => {
   const { completed, description, name } = item;
 
   return (
