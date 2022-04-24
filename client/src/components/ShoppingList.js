@@ -4,6 +4,7 @@ import { useQuery } from "graphql-hooks";
 import styled from "@mui/material/styles/styled";
 
 import AddItemDialog from "components/AddItemDialog";
+import UpdateItemDialog from "components/UpdateItemDialog";
 import FlexColumn from "components/FlexColumn";
 import FlexRow from "components/FlexRow";
 import LoadingSpinner from "components/LoadingSpinner";
@@ -11,7 +12,7 @@ import ShoppingListItem from "components/ShoppingListItem";
 import Button from "components/Button";
 import Typography from "components/NunitoTypography";
 
-import getItems from "queries/getItems";
+import getItemsQuery from "queries/getItems";
 
 const Layout = styled("div")`
   display: flex;
@@ -29,8 +30,11 @@ const EmptyList = styled(FlexColumn)`
 `;
 
 const ShoppingList = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const { data, loading, error } = useQuery(getItems);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
+  const [editingItem, setEditingItem] = useState(null);
+
+  const { data, loading, error } = useQuery(getItemsQuery);
 
   if (error) {
     alert("There was an error processing the request");
@@ -48,8 +52,8 @@ const ShoppingList = () => {
     return (
       <>
         <AddItemDialog
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
+          isOpen={isAddModalOpen}
+          onClose={() => setIsAddModalOpen(false)}
         />
         <Layout>
           <EmptyList>
@@ -57,7 +61,7 @@ const ShoppingList = () => {
               Your shopping list is empty :(
             </Typography>
             <Button
-              onClick={() => setIsModalOpen(true)}
+              onClick={() => setIsAddModalOpen(true)}
               sx={{ marginBottom: 15, marginTop: 1 }}
             >
               <Typography
@@ -78,16 +82,34 @@ const ShoppingList = () => {
   return (
     <>
       <AddItemDialog
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+        isOpen={isAddModalOpen}
+        onClose={() => setIsAddModalOpen(false)}
+      />
+      <UpdateItemDialog
+        isOpen={isUpdateModalOpen}
+        onClose={() => setIsUpdateModalOpen(false)}
+        onSubmit={() => {
+          setIsUpdateModalOpen(false);
+          setEditingItem(null);
+        }}
+        item={editingItem}
       />
       <Layout>
         <FlexRow sx={{ alignItems: "center", justifyContent: "space-between" }}>
           <Typography variant="h6">Your Items</Typography>
-          <Button onClick={() => setIsModalOpen(true)}>Add item</Button>
+          <Button onClick={() => setIsAddModalOpen(true)}>Add item</Button>
         </FlexRow>
         {data.getItems.map((item) => {
-          return <ShoppingListItem key={item.id} {...item} />;
+          return (
+            <ShoppingListItem
+              key={item.id}
+              onEdit={(item) => {
+                setEditingItem(item);
+                setIsUpdateModalOpen(true);
+              }}
+              item={item}
+            />
+          );
         })}
       </Layout>
     </>
