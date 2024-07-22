@@ -8,7 +8,7 @@ const item = {
 };
 
 describe("ShoppingListItem", () => {
-  const setup = (overrideProps) => { 
+  const setup = (overrideProps) => {
     const defaultProps = { item };
     const props = { ...defaultProps, ...overrideProps };
     return render(<ShoppingListItem {...props} />);
@@ -25,14 +25,14 @@ describe("ShoppingListItem", () => {
   test("should render the item name", () => {
     setup();
 
-    const name  = screen.getByText(item.name);
+    const name = screen.getByText(item.name);
     expect(name).toBeInTheDocument();
   });
 
   test("should render the item description", () => {
     setup();
 
-    const description  = screen.getByText(item.description);
+    const description = screen.getByText(item.description);
     expect(description).toBeInTheDocument();
   });
 
