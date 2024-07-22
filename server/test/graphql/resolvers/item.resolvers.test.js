@@ -44,7 +44,7 @@ test("item.resolvers", async (t) => {
     t.equal(items, result.rows);
     t.equal(
       queryText,
-      "SELECT id, name, description, quantity, completed FROM items WHERE deleted = false"
+      "SELECT id, name, description, quantity, completed FROM items WHERE deleted = false",
     );
   });
 
@@ -56,7 +56,7 @@ test("item.resolvers", async (t) => {
 
     t.equal(
       queryText,
-      "UPDATE items SET deleted = true WHERE id = $1 RETURNING id, name"
+      "UPDATE items SET deleted = true WHERE id = $1 RETURNING id, name",
     );
 
     const [id] = queryValues;
@@ -73,7 +73,7 @@ test("item.resolvers", async (t) => {
 
     t.equal(
       queryText,
-      "UPDATE items SET name = $1, description = $2, quantity = $3, completed = $4 WHERE id = $5 RETURNING id, name, description, quantity, completed"
+      "UPDATE items SET name = $1, description = $2, quantity = $3, completed = $4 WHERE id = $5 RETURNING id, name, description, quantity, completed",
     );
 
     const [name, description, quantity, completed, id] = queryValues;
@@ -100,7 +100,7 @@ test("item.resolvers", async (t) => {
 
     t.equal(
       queryText,
-      "UPDATE items SET name = $1, description = $2, quantity = $3, completed = $4 WHERE id = $5 RETURNING id, name, description, quantity, completed"
+      "UPDATE items SET name = $1, description = $2, quantity = $3, completed = $4 WHERE id = $5 RETURNING id, name, description, quantity, completed",
     );
 
     const [name, description, quantity, completed, id] = queryValues;
@@ -121,7 +121,7 @@ test("item.resolvers", async (t) => {
 
     t.equal(
       queryText,
-      "INSERT INTO items(name, description, quantity) VALUES ($1, $2, $3) RETURNING id, name, description, quantity, completed"
+      "INSERT INTO items(name, description, quantity) VALUES ($1, $2, $3) RETURNING id, name, description, quantity, completed",
     );
 
     const [name, description, quantity] = queryValues;

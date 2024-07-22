@@ -43,7 +43,14 @@ validating, and testing graphql queries. The server graphql documentation is als
 
 ```graphql
 mutation {
-  addItem(item: { name: "test item", description: "test description", quantity: 1, completed: false }) {
+  addItem(
+    item: {
+      name: "test item"
+      description: "test description"
+      quantity: 1
+      completed: false
+    }
+  ) {
     item {
       id
       name
@@ -59,7 +66,15 @@ mutation {
 
 ```graphql
 mutation {
-  updateItem(item: { id: 1, completed: true, name: "thomas update", description: "updated description", quantity: 2 }) {
+  updateItem(
+    item: {
+      id: 1
+      completed: true
+      name: "thomas update"
+      description: "updated description"
+      quantity: 2
+    }
+  ) {
     item {
       id
       name

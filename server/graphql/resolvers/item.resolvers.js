@@ -1,7 +1,7 @@
 const addItem = async (parent, args, context) => {
   const result = await context.app.pg.query(
     "INSERT INTO items(name, description, quantity) VALUES ($1, $2, $3) RETURNING id, name, description, quantity, completed",
-    [args.item.name, args.item.description, args.item.quantity]
+    [args.item.name, args.item.description, args.item.quantity],
   );
   return { item: result.rows[0] };
 };
@@ -15,7 +15,7 @@ const updateItem = async (parent, args, context) => {
       args.item.quantity,
       args.item.completed ?? false,
       args.item.id,
-    ]
+    ],
   );
   return { item: result.rows[0] };
 };
@@ -23,14 +23,14 @@ const updateItem = async (parent, args, context) => {
 const deleteItem = async (parent, args, context) => {
   const result = await context.app.pg.query(
     "UPDATE items SET deleted = true WHERE id = $1 RETURNING id, name",
-    [args.item.id]
+    [args.item.id],
   );
   return { item: result.rows[0] };
 };
 
 const getItems = async (parent, args, context) => {
   const result = await context.app.pg.query(
-    "SELECT id, name, description, quantity, completed FROM items WHERE deleted = false ORDER BY id ASC"
+    "SELECT id, name, description, quantity, completed FROM items WHERE deleted = false ORDER BY id ASC",
   );
   return result.rows;
 };

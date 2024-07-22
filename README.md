@@ -1,6 +1,6 @@
 # shopper
 
-welcome to shopper - a shopping list app! 
+welcome to shopper - a shopping list app!
 
 this repo contains 2 codebases: `client` and `server`
 
