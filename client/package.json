@@ -33,6 +33,11 @@
       "react-app/jest"
     ]
   },
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!@mui|@babel)"
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",
