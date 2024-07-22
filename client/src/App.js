@@ -7,15 +7,13 @@ import ShoppingList from "components/ShoppingList";
 
 import theme from "./theme";
 
-import "App.css";
-
 function App() {
   return (
     <>
       <CssBaseline />
       <ThemeProvider theme={theme}>
         <GraphQLProvider>
-          <div className="App">
+          <div>
             <Header />
             <ShoppingList />
           </div>
