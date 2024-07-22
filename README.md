@@ -9,9 +9,14 @@ this repo contains 2 codebases: `client` and `server`
 
 ## quick start guide
 
+- use node v18.20.4: `nvm use 18.20.4`
 - clone the repo: `git clone https://github.com/lpww/shopper.git`
 - copy example env: `cd server && cp .env.example .env`
-- edit `server/.env` to assign `POSTGRES_DB`, `POSTGRES_PASSWORD`, and `POSTGRES_USER` any value you like
-- run database: `cd server && docker-compose up`
+- edit `server/.env` and assign `POSTGRES_PASSWORD` to any value you like
+- run database: `cd server && docker-compose up -d`
 - run server: `cd server && npm ci && npm run dev`
 - run client: `cd client && npm ci && npm start`
+
+## more details
+
+view the [client readme](https://www.github.com/lpww/shopper/tree/master/client/README.md) and [server readme](https://www.github.com/lpww/shopper/tree/master/server/README.md) for more details
