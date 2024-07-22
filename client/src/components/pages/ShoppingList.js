@@ -3,14 +3,14 @@ import { useMutation, useQuery } from "graphql-hooks";
 
 import styled from "@mui/material/styles/styled";
 
-import AddItemDialog from "components/AddItemDialog";
-import UpdateItemDialog from "components/UpdateItemDialog";
-import FlexColumn from "components/FlexColumn";
-import FlexRow from "components/FlexRow";
-import LoadingSpinner from "components/LoadingSpinner";
-import ShoppingListItem from "components/ShoppingListItem";
-import Button from "components/Button";
-import Typography from "components/NunitoTypography";
+import AddItemDialog from "components/organisms/AddItemDialog";
+import UpdateItemDialog from "components/organisms/UpdateItemDialog";
+import FlexColumn from "components/atoms/FlexColumn";
+import FlexRow from "components/atoms/FlexRow";
+import LoadingSpinner from "components/molecules/LoadingSpinner";
+import ShoppingListItem from "components/organisms/ShoppingListItem";
+import Button from "components/atoms/Button";
+import Typography from "components/atoms/NunitoTypography";
 
 import getItemsQuery from "queries/getItems";
 import updateItemQuery from "queries/updateItem";

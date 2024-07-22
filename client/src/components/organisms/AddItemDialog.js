@@ -11,9 +11,9 @@ import TextField from "@mui/material/TextField";
 
 import styled from "@mui/material/styles/styled";
 
-import Button from "components/Button";
-import DosisTypography from "components/DosisTypography";
-import NunitoTypography from "components/NunitoTypography";
+import Button from "components/atoms/Button";
+import DosisTypography from "components/atoms/DosisTypography";
+import NunitoTypography from "components/atoms/NunitoTypography";
 
 import addItemQuery from "queries/addItem";
 

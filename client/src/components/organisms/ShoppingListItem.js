@@ -6,9 +6,9 @@ import EditIcon from "@mui/icons-material/EditOutlined";
 
 import styled from "@mui/material/styles/styled";
 
-import FlexColumn from "components/FlexColumn";
-import FlexRow from "components/FlexRow";
-import NunitoTypography from "components/NunitoTypography";
+import FlexColumn from "components/atoms/FlexColumn";
+import FlexRow from "components/atoms/FlexRow";
+import NunitoTypography from "components/atoms/NunitoTypography";
 
 const Typography = styled(NunitoTypography)`
   font-weight: 500;

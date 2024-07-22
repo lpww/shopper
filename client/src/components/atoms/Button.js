@@ -1,5 +1,5 @@
 import MuiButton from "@mui/material/Button";
-import Typography from "components/NunitoTypography";
+import Typography from "components/atoms/NunitoTypography";
 
 const Button = ({ children, ...props }) => {
   return (

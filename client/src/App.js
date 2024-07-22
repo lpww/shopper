@@ -1,9 +1,9 @@
 import CssBaseline from "@mui/material/CssBaseline";
 import ThemeProvider from "@mui/material/styles/ThemeProvider";
 
-import GraphQLProvider from "components/GraphQLProvider";
-import Header from "components/Header";
-import ShoppingList from "components/ShoppingList";
+import Header from "components/molecules/Header";
+import GraphQLProvider from "components/organisms/GraphQLProvider";
+import ShoppingListPage from "components/pages/ShoppingList";
 
 import theme from "./theme";
 
@@ -15,7 +15,7 @@ function App() {
         <GraphQLProvider>
           <div>
             <Header />
-            <ShoppingList />
+            <ShoppingListPage />
           </div>
         </GraphQLProvider>
       </ThemeProvider>

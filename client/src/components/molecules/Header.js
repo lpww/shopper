@@ -1,6 +1,6 @@
 import styled from "@mui/material/styles/styled";
 
-import DosisTypography from "./DosisTypography";
+import DosisTypography from "components/atoms/DosisTypography";
 
 const Title = styled(DosisTypography)`
   color: white;
