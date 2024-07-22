@@ -10,7 +10,7 @@ Ensure that you are in the server directory before continuing through the setup 
 ### environment variables
 
 1. `cp .env.example .env` to initialize your environment
-2. Open `.env` and edit the postgres variables (POSTGRES_DB, POSTGRES_PASSWORD, POSTGRES_USER). For local development, they can be set to any value
+2. Open `.env` and edit the postgres password (POSTGRES_PASSWORD). For local development, it can be set to any value
 
 ### database
 
