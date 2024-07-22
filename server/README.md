@@ -7,6 +7,10 @@ database running in a docker container.
 
 Ensure that you are in the server directory before continuing through the setup docs. `cd server/`
 
+### node version
+
+This server runs node `v18.20.4`, which can be installed with `nvm use 18.20.4`.
+
 ### environment variables
 
 1. `cp .env.example .env` to initialize your environment
