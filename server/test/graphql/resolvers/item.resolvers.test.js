@@ -37,14 +37,14 @@ test("item.resolvers", async (t) => {
     queryValues = null;
   });
 
-  test("Query.getItems", async (t) => {
+  test("focusQuery.getItems", async (t) => {
     const args = {};
 
     const items = await Query.getItems(parent, args, context);
     t.equal(items, result.rows);
     t.equal(
       queryText,
-      "SELECT id, name, description, quantity, completed FROM items WHERE deleted = false",
+      "SELECT id, name, description, quantity, completed FROM items WHERE deleted = false ORDER BY id ASC",
     );
   });
 
@@ -107,7 +107,7 @@ test("item.resolvers", async (t) => {
     t.equal(name, args.item.name);
     t.equal(description, args.item.description);
     t.equal(quantity, args.item.quantity);
-    t.equal(completed, false);
+    t.equal(completed, args.item.completed);
     t.equal(id, args.item.id);
   });
 
