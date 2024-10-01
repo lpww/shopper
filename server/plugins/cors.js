@@ -1,7 +1,7 @@
 "use strict";
 
 const fp = require("fastify-plugin");
-const cors = require("fastify-cors");
+const cors = require("@fastify/cors");
 
 /**
  * This plugins adds cors configuration
