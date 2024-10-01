@@ -1,7 +1,7 @@
 "use strict";
 
 const fp = require("fastify-plugin");
-const sensible = require("fastify-sensible");
+const sensible = require("@fastify/sensible");
 
 /**
  * This plugins adds some utilities to handle http errors

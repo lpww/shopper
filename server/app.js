@@ -1,6 +1,6 @@
 "use strict";
 
-const autoLoad = require("fastify-autoload");
+const autoLoad = require("@fastify/autoload");
 const path = require("path");
 
 module.exports = async function (fastify, opts) {

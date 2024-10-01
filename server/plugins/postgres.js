@@ -1,7 +1,7 @@
 "use strict";
 
 const fp = require("fastify-plugin");
-const postgres = require("fastify-postgres");
+const postgres = require("@fastify/postgres");
 
 /**
  * This plugins adds some utilities to handle postgres connections
